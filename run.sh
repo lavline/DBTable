@@ -1,5 +1,5 @@
 #!/bin/bash
-INPUT_DIR="../../../ACL_dataset"
+INPUT_DIR="../../../dataset"
 
 outputfile="./out.stat"
 
@@ -17,8 +17,8 @@ do
         filter="$i"_$j
         echo $filter
         rf="$INPUT_DIR"/"$filter".txt
-        tf="$INPUT_DIR"/"$filter"_trace-1.txt
+        tf="$INPUT_DIR"/"$filter"_trace.txt
         echo $filter >> $outputfile
-        taskset -c 3 ./main -r $rf -p $tf>>$outputfile
+        ./main -r $rf -p $tf>>$outputfile
     done
 done
